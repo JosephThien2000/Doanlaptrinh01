@@ -1,6 +1,7 @@
 # Doanlaptrinh01
 Nhập thông tin sinh viên và in ra bảng điểm cuối kỳ
 
+# Thiện
 # Hàm nhập thông tin sinh viên
 def NhapDauVao():
     def HoTen():
@@ -137,3 +138,42 @@ def NhapDauVao():
 #Nhập thông tin sinh viên
 print("---Mời nhập thông tin của sinh viên---")
 sv = NhapDauVao()   
+
+# Hân
+def tinchi():
+    list_tc = []
+    total = 0
+    while True: # xét điều kiện tổng số tín chỉ phải lớn hơn hoặc bằng 10
+        for i in range(5):
+            tinchi = random.randint(1, 3)
+            total += tinchi
+            list_tc.append(tinchi)
+        if(total>=10):
+            return list_tc
+            break
+        else:
+            list_tc = []
+            continue        
+v = tinchi()
+# Hàm tinh điểm cuối kỳ - điểm kết thúc học kỳ
+tongdkt = [tinh(a,g),tinh(b,h),tinh(c,i),tinh(e,k),tinh(f,j)]
+def diemcuoiky():
+    total = 0
+    tong = 0
+    for i in range(5):
+        tongdhp = tongdkt[i] * v[i]
+        tong += tongdhp
+        total += v[i]
+    dkt = round((tong/total),2)
+    return dkt    
+# Hàm xếp loại 
+def xeploai(x):
+    if(0.0 <= x <= 10.0):
+        if(x >= 9.0):
+            return "Giỏi"
+        elif(7.0 <= x < 9.0):
+            return "Khá"
+        elif(5.0 <= x < 7.0):
+            return "Trung Bình"
+        else:
+            return "Yếu"
