@@ -139,7 +139,15 @@ def NhapDauVao():
 print("---Mời nhập thông tin của sinh viên---")
 sv = NhapDauVao()   
 
-# Hân
+#Tạo danh sách điểm giữa kỳ, điểm cuối kỳ
+diemgiuaky = []
+diemcuoiky = []
+diemketthuchp = []
+#tạo danh sách môn học môn học 
+m = ["Toán cao cấp", "Tiếng anh 1", "Dịch vụ hành chính", "Lập trình", "Công nghệ thông tin"]
+#Hoa
+#Hàm in tín chỉ, gọi hàm random
+import random
 def tinchi():
     list_tc = []
     total = 0
@@ -155,37 +163,14 @@ def tinchi():
             list_tc = []
             continue        
 v = tinchi()
-# Hàm tinh điểm cuối kỳ - điểm kết thúc học kỳ
-tongdkt = [tinh(a,g),tinh(b,h),tinh(c,i),tinh(e,k),tinh(f,j)]
-def diemcuoiky():
-    total = 0
-    tong = 0
-    for i in range(5):
-        tongdhp = tongdkt[i] * v[i]
-        tong += tongdhp
-        total += v[i]
-    dkt = round((tong/total),2)
-    return dkt    
-# Hàm xếp loại 
-def xeploai(x):
-    if(0.0 <= x <= 10.0):
-        if(x >= 9.0):
-            return "Giỏi"
-        elif(7.0 <= x < 9.0):
-            return "Khá"
-        elif(5.0 <= x < 7.0):
-            return "Trung Bình"
-        else:
-            return "Yếu"
-
-# Hoa
 #Hàm nhập điểm thi giữa kỳ - điểm 30%   
 def diem30():
     print("---Mời nhập điểm giữa kỳ---")
     for k in range(5):
+        print("Môn", m[k], ': ', end= ' ')
         while True: # xét điều kiện để điểm nhập vào là hợp lý
-            d30 = float(input("Môn " + m[k]) )
-            if(d30 < 0 or d30 > 10):
+            d30 = float(input())
+            if((d30 < 0.0) or (d30 > 10.0)):
                 print("\nĐiểm bạn nhập không đúng","\n---Vui lòng nhập lại---")
                 continue
             else:
@@ -197,9 +182,10 @@ def diem30():
 def diem70():
     print("---Mời nhập điểm cuối kỳ---")
     for j in range(5):
+        print("Môn", m[j], ': ', end= ' ')
         while True: #Xét điều kiện để điểm nhập vào là hợp lệ
-            d70 = float(input("Môn " + m[j]) )
-            if(d70 < 0 or d70 > 10):
+            d70 = float(input())
+            if((d70 < 0.0) or (d70 > 10.0)):
                 print("\nĐiểm bạn nhập không đúng","\n---Vui lòng nhập lại---")
                 continue
             else:
@@ -223,11 +209,34 @@ def dk(d1,d2):
         return 'Qua môn'
     else:
         return 'Rớt'
+# Hân
+# Hàm tinh điểm cuối kỳ - điểm kết thúc học kỳ
+tongdkt = [tinh(a,g),tinh(b,h),tinh(c,i),tinh(e,k),tinh(f,j)]
+def diemcuoiky():
+    total = 0
+    tong = 0
+    for i in range(5):
+        tongdhp = tongdkt[i] * v[i]
+        tong += tongdhp
+        total += v[i]
+    dkt = round((tong/total),2)
+    return dkt    
+# Hàm xếp loại 
+def xeploai(x):
+    if(0.0 <= x <= 10.0):
+        if(x >= 9.0):
+            return "Giỏi"
+        elif(7.0 <= x < 9.0):
+            return "Khá"
+        elif(5.0 <= x < 7.0):
+            return "Trung Bình"
+        else:
+            return "Yếu"
 print('-'*100)        
 print("\nTHÔNG TIN SINH VIÊN: ")
 print(sv)
 # In bảng thống kê điểm theo từng môn học
-
+# Hoa
 row_0 = ' {:^115} '.format("BẢNG KẾT QUẢ HỌC TẬP")
 row_1 = '+ {:-^4} + {:-^25} + {:-^10} + {:-^15} + {:-^15} + {:-^20} + {:->8} +'.format('', '', '','','','','')
 row_2 = '| {:^4} | {:^25} | {:^10} | {:^15} | {:^15} | {:^20} | {:>8} |'.format('STT','Môn học', 'Tín chỉ', 'Điểm 30%','Điểm 70%','Điểm kết thúc HP','Kết quả')
@@ -242,3 +251,5 @@ l_rows = [row_0,row_1,row_2,row_3,row_4,row_5,row_6,row_7,row_8,row_9]
 
 for i in range(len(l_rows)):
     print(l_rows[i])
+print(f"\nĐiểm trung bình học kỳ: {diemcuoiky()}")
+print(f"\nHọc lực: {xeploai(diemcuoiky())}")
