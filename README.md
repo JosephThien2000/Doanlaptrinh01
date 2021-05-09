@@ -209,7 +209,7 @@ def dk(d1,d2):
         return 'Qua môn'
     else:
         return 'Rớt'
-# Hân
+# Hân, Hoa
 # Hàm tinh điểm cuối kỳ - điểm kết thúc học kỳ
 tongdkt = [tinh(a,g),tinh(b,h),tinh(c,i),tinh(e,k),tinh(f,j)]
 def diemcuoiky():
