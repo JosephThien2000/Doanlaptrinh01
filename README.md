@@ -5,4 +5,4 @@
 * ### Nguyễn Thái Minh Thiện
 * ### Võ Thị Mai Hoa
 * ### Lê Nhã Hân
-* ### mã Hoàng Khôi
+* ### Mã Hoàng Khôi
